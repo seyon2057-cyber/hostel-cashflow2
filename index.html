@@ -99,15 +99,15 @@ input:focus,select:focus{border-color:var(--ink)}
 
   <div class="hero">
     <div class="hero-label">Available Balance</div>
-    <div class="hero-balance" id="displayBalance">₹0</div>
+    <div class="hero-balance" id="displayBalance">Rs 0</div>
     <div class="bud-row"><span id="budLabel">Monthly budget: set pannala</span><span id="budPct"></span></div>
     <div class="bar" id="budBar"><i id="budFill"></i></div>
   </div>
   <div class="stats">
-    <div class="stat"><small><span class="dot" style="background:var(--success)"></span>Income</small><b id="displayIncome">₹0</b></div>
-    <div class="stat"><small><span class="dot" style="background:var(--danger)"></span>Spent</small><b id="displaySpent">₹0</b></div>
-    <div class="stat"><small><span class="dot" style="background:var(--warning)"></span>Lent (to get back)</small><b id="displayLent">₹0</b></div>
-    <div class="stat"><small><span class="dot" style="background:var(--primary)"></span>I Owe (Borrowed)</small><b id="displayBorrowed">₹0</b></div>
+    <div class="stat"><small><span class="dot" style="background:var(--success)"></span>Income</small><b id="displayIncome">Rs 0</b></div>
+    <div class="stat"><small><span class="dot" style="background:var(--danger)"></span>Spent</small><b id="displaySpent">Rs 0</b></div>
+    <div class="stat"><small><span class="dot" style="background:var(--warning)"></span>Lent (to get back)</small><b id="displayLent">Rs 0</b></div>
+    <div class="stat"><small><span class="dot" style="background:var(--primary)"></span>I Owe (Borrowed)</small><b id="displayBorrowed">Rs 0</b></div>
   </div>
 
   <div class="quick-actions">
@@ -124,27 +124,27 @@ input:focus,select:focus{border-color:var(--ink)}
     <div class="chips" id="quickChips"></div>
     <label>Category</label>
     <select id="category"></select>
-    <label>Amount (₹)</label><input type="number" id="amount" placeholder="0" inputmode="decimal" />
+    <label>Amount (Rs)</label><input type="number" id="amount" placeholder="0" inputmode="decimal" />
     <button class="btn-submit" onclick="addExpense()">Save Expense</button>
   </div>
   <div id="incomeForm" class="form-sheet">
     <div class="form-header"><div class="form-title">💰 Add Income</div><button class="btn-close" onclick="closeAllForms()">✕</button></div>
     <label>Note</label><input type="text" id="incomeNote" placeholder="Pocket money, Home..." />
-    <label>Amount (₹)</label><input type="number" id="incomeAmount" placeholder="0" inputmode="decimal" />
+    <label>Amount (Rs)</label><input type="number" id="incomeAmount" placeholder="0" inputmode="decimal" />
     <button class="btn-submit" onclick="addIncome()">Save Income</button>
   </div>
   <div id="lentForm" class="form-sheet">
     <div class="form-header"><div class="form-title">🤝 Lend to Roommate</div><button class="btn-close" onclick="closeAllForms()">✕</button></div>
     <label>Yaarukku?</label><input type="text" id="roommateName" placeholder="Name" />
     <label>Reason</label><input type="text" id="lentDesc" placeholder="Food, Recharge..." />
-    <label>Amount (₹)</label><input type="number" id="lentAmount" placeholder="0" inputmode="decimal" />
+    <label>Amount (Rs)</label><input type="number" id="lentAmount" placeholder="0" inputmode="decimal" />
     <button class="btn-submit" onclick="addDue('lent')">Save</button>
   </div>
   <div id="borrowForm" class="form-sheet">
     <div class="form-header"><div class="form-title">📥 Borrowed from Roommate</div><button class="btn-close" onclick="closeAllForms()">✕</button></div>
     <label>Yaar kitta vaangineenga?</label><input type="text" id="borrowName" placeholder="Name" />
     <label>Reason</label><input type="text" id="borrowDesc" placeholder="Food, Fees..." />
-    <label>Amount (₹)</label><input type="number" id="borrowAmount" placeholder="0" inputmode="decimal" />
+    <label>Amount (Rs)</label><input type="number" id="borrowAmount" placeholder="0" inputmode="decimal" />
     <button class="btn-submit" onclick="addDue('borrowed')">Save</button>
   </div>
 
@@ -200,10 +200,10 @@ input:focus,select:focus{border-color:var(--ink)}
 
 <script>
 const CATS = {"Food & Mess":"🍔","Snacks & Tea":"☕","Study & Books":"📚","Travel":"🚌","Recharge":"📱","Health":"💊","Fun":"🎮","Other":"📦"};
-const QUICK = [["Tea","Snacks & Tea",10],["Mess","Food & Mess",60],["Bus","Travel",20],["Recharge","Recharge",199]];
+const QUICK = [["Tea","Snacks & Tea",50],["Mess","Food & Mess",250],["Bus","Travel",50],["Recharge","Recharge",200]];
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const inr = n => "₹" + Number(n).toLocaleString("en-IN");
+const inr = n => "Rs " + Number(n).toLocaleString("en-US");
 const load = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) || d; } catch { return d; } };
 
 const now = new Date();
